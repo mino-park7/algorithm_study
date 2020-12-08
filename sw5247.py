@@ -75,11 +75,60 @@ def bfs(s,e):
             else:
                 continue
 
-T = int(input())
+def my_calc(num, i):
+    if i == 0:
+        return num + 1
+    elif i == 1:
+        return num * 2
+    elif i == 2:
+        return num - 1
+    elif i == 3:
+        return num - 10
+    else:
+        return 0
 
-for test_case in range(1,T+1):
-    start, end = map(int, input().split())
 
-    result = bfs(start, end)
+def BFS(N, M):
+    dq = SingleLinkedList()
+    dq.append((N,0))
+    #states = ['+1', '*2', '-1', '-10']
+    #print(result)
+    while dq.length != 0:
+        num, count = dq.pop()
+        if num == M :
+            
+            result = count
+            return result
+        for state in range(4):
+            num2 = my_calc(num, state)
+            #print(num2)
+            if 0 <= num2 <= 1000000 and visited[num2] != test_case :
+                dq.append((num2, count+1))
+                #print(dq)
+                visited[num2]=test_case
+                
     
+    
+    
+    
+    
+T = int(input())
+visited = [0] * 1000001
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    # ///////////////////////////////////////////////////////////////////////////////////
+    '''
+
+        이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+
+    '''
+    
+    
+    N, M = map(int,input().split())
+    #result = 0
+    #print(result)
+    
+    #print(dq)
+    result = BFS(N, M)
     print("#%i %i"%(test_case,result))
+    # ///////////////////////////////////////////////////////////////////////////////////
